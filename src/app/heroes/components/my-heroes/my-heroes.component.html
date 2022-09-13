@@ -1,4 +1,10 @@
 <div class="row">
+  <div class="col-md-12">
+    <button class="btn btn-primary" (click)="sortCards()">{{ascendingOrder ? 'Ascending ' : 'Descending '}} sort</button>
+  </div>
+</div>
+
+<div class="row">
   <div class="col-sm-6" *ngFor="let hero of myHeroes">
     <app-hero-card [hero]="hero" [myHeroes]="true"></app-hero-card>
   </div>

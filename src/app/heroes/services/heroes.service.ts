@@ -38,4 +38,12 @@ export class HeroesService {
       }
     });
   }
+
+  public sortHeroes(sortType: string){
+    if(sortType === 'asc'){
+      this.myHeroes.sort((first, second) => 0 - (first.currentPower < second.currentPower ? -1 : 1));
+    } else {
+      this.myHeroes.sort((first, second) => 0 - (first.currentPower > second.currentPower ? -1 : 1));
+    }
+  }
 }
