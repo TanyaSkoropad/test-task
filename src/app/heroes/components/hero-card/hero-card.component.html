@@ -1,0 +1,41 @@
+<div class="card">
+  <div class="card-body">
+    <h5 class="card-title">{{ hero?.name }}</h5>
+    <p class="card-text">Ability: {{ hero?.ability }}</p>
+    <span *ngIf="myHeroes">
+      <p class="card-text">
+        Date of start training:
+        {{ hero?.startTrainingDate | date: "mediumDate" }}
+      </p>
+      <p class="card-text">Suit colors: {{ hero?.suitColors?.toString() }}</p>
+    </span>
+    <p class="card-text" style="margin-top: 15px">
+      Starting power: {{ hero?.startingPower }}
+    </p>
+    <div *ngIf="myHeroes" class="margin-bottom-15">
+      <p class="card-text">Current power: {{ hero?.currentPower }}</p>
+      <span *ngIf="startedTraining">
+        <input
+          type="text"
+          #changedCurrentPower
+          class="form-control margin-bottom-15"
+        />
+        <button
+          type="button"
+          class="btn btn-primary"
+          (click)="changeCurrentPower(changedCurrentPower.value)"
+        >
+          Change
+        </button>
+      </span>
+    </div>
+    <button
+      type="button"
+      class="btn btn-primary"
+      (click)="startTraining()"
+      *ngIf="!startedTraining"
+    >
+      Train
+    </button>
+  </div>
+</div>

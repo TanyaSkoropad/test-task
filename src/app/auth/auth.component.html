@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <form class="col-6" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="login">Login:</label>
+        <input
+          type="text"
+          class="form-control"
+          id="login"
+          formControlName="login"
+        />
+      </div>
+      <div class="form-group">
+        <label for="password">Password:</label>
+        <input
+          type="password"
+          class="form-control"
+          id="password"
+          formControlName="password"
+        />
+      </div>
+      <span
+        *ngIf="
+          !loginForm.get('password')?.valid &&
+          loginForm.get('password')?.touched
+        "
+        class="help-block"
+      >
+        Password must be at least 8 symbols and contain one uppercase character,
+        one special character and one number
+      </span>
+      <span *ngIf="invalidCreds" class="help-block"
+        >Invalid login or password</span
+      >
+      <div>
+        <button
+          class="btn btn-primary"
+          type="submit"
+          [disabled]="loginForm.invalid"
+        >
+          Log in
+        </button>
+      </div>
+    </form>
+  </div>
+</div>
